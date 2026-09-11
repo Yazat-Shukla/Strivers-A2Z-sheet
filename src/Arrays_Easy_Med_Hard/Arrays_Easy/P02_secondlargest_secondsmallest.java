@@ -22,14 +22,19 @@ public class P02_secondlargest_secondsmallest {
                 min = arr[i];
             }
         }
-        int sec_max = arr[0];
-        int sec_min = arr[0];
+        int sec_max = Integer.MIN_VALUE;
+        int sec_min = Integer.MAX_VALUE;
         for (int i = 0;i<arr.length;i++){
             if (arr[i]>sec_max && arr[i]<max){
                 sec_max=arr[i];
             } else if (arr[i]<sec_min && arr[i]>min){
                 sec_min=arr[i];
             }
+        }
+        if (sec_min == Integer.MAX_VALUE){
+            return new int[] {-1,-1};
+        } else if (sec_max == Integer.MIN_VALUE){
+            return new int[] {-1,-1};
         }
         return new int[] {sec_max,sec_min};
     }
