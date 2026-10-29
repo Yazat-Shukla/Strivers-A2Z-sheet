@@ -132,13 +132,20 @@ class doublelist{
             return;
         }else if (head.next==null && head.val == value){
             head=null;
-            return;
         }else{
             Node prev=null;
             while(current!=null){
-                if (current.val==value){
-                    current.prev.next=current.next.next;
+                if (current.val==value && current==head){
+                    head = current.next;
+                    break;
+                }else if (current.val==value){
+                    current.prev.next=current.next;
                     current.next.prev=current.prev;
+                    break;
+                }
+                else if (current.val == value && current.next == null) {
+                    current.prev.next = null;
+                    break;
                 }
                 current=current.next;
             }
